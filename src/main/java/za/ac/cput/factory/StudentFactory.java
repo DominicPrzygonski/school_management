@@ -18,9 +18,9 @@ public class StudentFactory {
 
 
         //returning values to create the objects only if they are not null
-         return new Student.studentBuilder().setStudentId(studentId)
-                                            .setEmail(email)
-                                            .setName(name)
-                                            .Builder();
+         return new Student.studentBuilder().StudentId(studentId)
+                                            .Email(email)
+                                            .Name(name)
+                                            .build();
     }
 }
