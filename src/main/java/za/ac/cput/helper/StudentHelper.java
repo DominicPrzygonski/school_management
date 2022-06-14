@@ -1,8 +1,5 @@
 package za.ac.cput.helper;
 
-import java.util.UUID;
-
-import antlr.StringUtils;
 import org.apache.commons.validator.routines.EmailValidator;
 
 public class StudentHelper {
