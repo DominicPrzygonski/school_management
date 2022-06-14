@@ -18,33 +18,7 @@ public class Student {
         this.name = builder.name;
     }
 
-    //getter and setter for studentId
-    public String getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(String studentId) {
-        this.studentId = studentId;
-    }
-
-    //getter and setter for email
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    //getter and setter for name
-    public Name getName() {
-        return name;
-    }
-
-    public void setName(Name name) {
-        this.name = name;
-    }
-
+    //create variables into a toString
     @Override
     public String toString() {
         return "Student{" +
@@ -58,22 +32,6 @@ public class Student {
     public static class studentBuilder{
         private String studentId, email;
         private Name name;
-
-        //setting the studentId, email and name for the builder
-        public studentBuilder setStudentId(String studentId) {
-            this.studentId = studentId;
-            return this;
-        }
-
-        public studentBuilder setEmail(String email) {
-            this.email = email;
-            return this;
-        }
-
-        public studentBuilder setName(Name name) {
-            this.name = name;
-            return this;
-        }
 
         public Student.studentBuilder copy(Student student){
             this.studentId = student.studentId;
