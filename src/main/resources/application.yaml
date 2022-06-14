@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/school-management-db?createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:3306/school-management?createDatabaseIfNotExist=true
     username: root
     password:
   jpa:
