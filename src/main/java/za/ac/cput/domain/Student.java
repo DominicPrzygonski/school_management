@@ -33,6 +33,22 @@ public class Student {
         private String studentId, email;
         private Name name;
 
+        //setting the studentId, email and name for the builder
+        public studentBuilder setStudentId(String studentId) {
+            this.studentId = studentId;
+            return this;
+        }
+
+        public studentBuilder setEmail(String email) {
+            this.email = email;
+            return this;
+        }
+
+        public studentBuilder setName(Name name) {
+            this.name = name;
+            return this;
+        }
+
         public Student.studentBuilder copy(Student student){
             this.studentId = student.studentId;
             this.email = student.email;

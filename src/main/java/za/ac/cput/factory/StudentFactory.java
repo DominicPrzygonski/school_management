@@ -6,18 +6,21 @@ import za.ac.cput.helper.StudentHelper;
 public class StudentFactory {
     //method to create a student using builder from Student entity
     public static Student createStudent(String studentId, String email, Name name){
+        //ensuring values are not blank or null
+        StudentHelper.isBlankOrNull(studentId);
+        StudentHelper.checkEmail(email);
+        StudentHelper.isBlankOrNull(name);
+
+        //if values are invalid throw IllegalArgumentException
+        StudentHelper.checkParam("Student Id", studentId);
+        StudentHelper.checkParam("Email", email);
+        StudentHelper.checkParam("Name", name);
+
 
         //returning values to create the objects only if they are not null
-        if (!StudentHelper.isBlankOrEmptyOrNull(studentId) && StudentHelper.checkEmail(email) && !StudentHelper.isBlankOrEmptyOrNull(name)){
-            return new Student.studentBuilder().setStudentId(studentId)
-                    .setEmail(email)
-                    .setName(name)
-                    .Builder();
-        } else {
-            //confirms that values aren't blank, empty or null
-            return (StudentHelper.checkParam("Student ID", studentId);
-            StudentHelper.checkEmail(email);
-            StudentHelper.checkParam("Name", name);
-        }
+         return new Student.studentBuilder().setStudentId(studentId)
+                                            .setEmail(email)
+                                            .setName(name)
+                                            .Builder();
     }
 }
