@@ -3,10 +3,10 @@ package za.ac.cput.domain;
 import javax.persistence.*;
 
 @Embeddable
+@Entity
 public class Student {
     //declare variables
     @Id
-    @GeneratedValue
     private String studentId;
     private String email;
     private Name name;
