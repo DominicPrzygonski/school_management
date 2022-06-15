@@ -8,8 +8,10 @@ package za.ac.cput.domain;
  *
  */
 
+import javax.persistence.Embeddable;
 import java.util.Objects;
 
+@Embeddable
 public class Name {
 
     //instance variables
