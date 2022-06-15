@@ -2,38 +2,36 @@ package za.ac.cput.domain;
 
 import javax.persistence.*;
 
+import java.util.Objects;
+
 @Entity(name = "Student")
 public class Student {
-    Name name = new Name();
 
-    //declare variables
+    //***declare variables***
     @Id
-    @Column(name = "studentId", updatable = false, nullable = false, columnDefinition = "TEXT")
+    @Column(name = "studentId", updatable = false, nullable = false, columnDefinition = "TEXT", unique = true)
     public String studentId;
-    @Column(name = "email", updatable = false, nullable = false, columnDefinition = "TEXT")
-    public String email;
+    @Column(name = "email", updatable = false, nullable = false, columnDefinition = "TEXT", unique = true)
+    private String email;
     @Embedded
     @Column(name = "name", updatable = false, nullable = false, columnDefinition = "TEXT")
-    public Name name;
+    private Name name;
 
-    //constructor for the builder
+    //**default constructor***
+    public Student() {
+
+    }
+
+    //***constructor for the builder***
     public Student(studentBuilder builder){
         this.studentId = builder.studentId;
         this.email = builder.email;
         this.name = builder.name;
     }
 
-    //getters
-    public String getStudentId() {
-        return studentId;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public Name getName() {
-        return name;
+    @Override
+    public int hashCode(){
+        return Objects.hash(studentId, email, name);
     }
 
     //create variables into a toString
@@ -53,17 +51,17 @@ public class Student {
         private Name name;
 
         //setting the studentId, email and name for the builder
-        public studentBuilder StudentId(String studentId) {
+        public studentBuilder setStudentId(String studentId) {
             this.studentId = studentId;
             return this;
         }
 
-        public studentBuilder Email(String email) {
+        public studentBuilder setEmail(String email) {
             this.email = email;
             return this;
         }
 
-        public studentBuilder Name(Name name) {
+        public studentBuilder setName(Name name) {
             this.name = name;
             return this;
         }
