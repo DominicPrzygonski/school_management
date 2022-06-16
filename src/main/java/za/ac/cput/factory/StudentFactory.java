@@ -16,7 +16,7 @@ public class StudentFactory {
     public static Student createStudent(String studentId, String email, Name name){
         //ensuring values are not blank or null
         StudentHelper.isBlankOrNull(studentId);
-        StudentHelper.checkEmail(email);
+        StudentHelper.isBlankOrNull(email);
 
         //if values are invalid throw IllegalArgumentException
         StudentHelper.checkParam("Student Id", studentId);

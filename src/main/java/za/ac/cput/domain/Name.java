@@ -30,16 +30,26 @@ public class Name {
 
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Name name = (Name) o;
+        return firstName.equals(name.firstName) && middleName.equals(name.middleName) && lastName.equals(name.lastName) ;
+    }//end of equals method
 
-    public String getMiddleName() {
-        return middleName;
-    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, middleName, lastName);
+    }//end of hashCode method
 
-    public String getLastName() {
-        return lastName;
+    @Override
+    public String toString() {
+        return "NameBuilder{" +
+                "firstName='" + firstName + '\'' +
+                ", middleName='" + middleName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
     }
 
     public static class NameBuilder{
@@ -73,26 +83,6 @@ public class Name {
             return new Name(this);
         }//end of getName method
 
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            Name name = (Name) o;
-            return firstName.equals(name.firstName) && middleName.equals(name.middleName) && lastName.equals(name.lastName) ;
-        }//end of equals method
 
-        @Override
-        public int hashCode() {
-            return Objects.hash(firstName, middleName, lastName);
-        }//end of hashCode method
-
-        @Override
-        public String toString() {
-            return "NameBuilder{" +
-                    "firstName='" + firstName + '\'' +
-                    ", middleName='" + middleName + '\'' +
-                    ", lastName='" + lastName + '\'' +
-                    '}';
-        }
     }//end of NameBuilder
 }
