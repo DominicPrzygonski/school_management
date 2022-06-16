@@ -3,6 +3,7 @@ spring:
     url: jdbc:mysql://localhost:3306/school_management?createDatabaseIfNotExist=true
     username: root
     password:
+    driver-class-name: com.mysql.jdbc.Driver
   jpa:
     show-sql: true
     hibernate:

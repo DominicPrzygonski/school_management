@@ -26,6 +26,10 @@ public class Name {
         this.lastName   = nameBuilder.lastName;
     }//end of private constructor
 
+    public Name() {
+
+    }
+
     public String getFirstName() {
         return firstName;
     }

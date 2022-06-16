@@ -1,5 +1,13 @@
+/*
+*StudentFactory.java
+* factory class for the student entity
+* Rhegan Albert Fortuin 219273693
+* Date of last edit:2022/06/15
+*/
+
 package za.ac.cput.factory;
  
+import za.ac.cput.domain.Name;
 import za.ac.cput.domain.Student;
 import za.ac.cput.helper.StudentHelper;
 
@@ -9,12 +17,12 @@ public class StudentFactory {
         //ensuring values are not blank or null
         StudentHelper.isBlankOrNull(studentId);
         StudentHelper.checkEmail(email);
-        StudentHelper.isBlankOrNull(name);
+        //StudentHelper.isBlankOrNull(name);
 
         //if values are invalid throw IllegalArgumentException
         StudentHelper.checkParam("Student Id", studentId);
         StudentHelper.checkParam("Email", email);
-        StudentHelper.checkParam("Name", name);
+        //StudentHelper.checkParam("Name", name);
 
 
         //returning values to create the objects only if they are not null

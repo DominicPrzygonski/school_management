@@ -1,26 +1,36 @@
+/*
+* Student.java
+* entity class for student with a builder
+* Rhegan Albert Fortuin 219273693
+* Date of last edit:2022/06/15
+*/
+
 package za.ac.cput.domain;
 
-import javax.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity(name = "Student")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "Student")
 public class Student {
 
     //***declare variables***
     @Id
     @Column(name = "studentId", updatable = false, nullable = false, columnDefinition = "TEXT", unique = true)
-    public String studentId;
+    private String studentId;
     @Column(name = "email", updatable = false, nullable = false, columnDefinition = "TEXT", unique = true)
     private String email;
     @Embedded
     @Column(name = "name", updatable = false, nullable = false, columnDefinition = "TEXT")
     private Name name;
-
-    //**default constructor***
-    public Student() {
-
-    }
 
     //***constructor for the builder***
     public Student(studentBuilder builder){
@@ -30,7 +40,15 @@ public class Student {
     }
 
     @Override
-    public int hashCode(){
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Student student = (Student) o;
+        return studentId.equals(student.studentId) && email.equals(student.email) && name.equals(student.name) ;
+    }//end of equals method
+
+    @Override
+    public int hashCode() {
         return Objects.hash(studentId, email, name);
     }
 
