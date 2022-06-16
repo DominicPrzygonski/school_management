@@ -4,10 +4,14 @@ package za.ac.cput.domain;
  * Name.java
  * entity for the Name
  * Author: Benelzane Kholani (218257465)
- * Date: 18 June 2022
+ * Date: 13 June 2022
  *
- */
+ */ 
 
+import javax.persistence.Embeddable;
+import java.util.Objects;
+
+@Embeddable
 public class Name {
 
     //instance variables
@@ -15,24 +19,33 @@ public class Name {
     private String middleName;
     private String lastName;
 
-    private Name()
-    {}//end of private constructor
+    private Name(NameBuilder nameBuilder)
+    {
+        this.firstName  = nameBuilder.firstName;
+        this.middleName = nameBuilder.middleName;
+        this.lastName   = nameBuilder.lastName;
+    }//end of private constructor
 
-    public String getFirstName() {
-        return firstName;
-    }
+    public Name() {
 
-    public String getMiddleName() {
-        return middleName;
-    }
-
-    public String getLastName() {
-        return lastName;
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Name name = (Name) o;
+        return firstName.equals(name.firstName) && middleName.equals(name.middleName) && lastName.equals(name.lastName) ;
+    }//end of equals method
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, middleName, lastName);
+    }//end of hashCode method
+
+    @Override
     public String toString() {
-        return "Name{" +
+        return "NameBuilder{" +
                 "firstName='" + firstName + '\'' +
                 ", middleName='" + middleName + '\'' +
                 ", lastName='" + lastName + '\'' +
@@ -59,13 +72,17 @@ public class Name {
             return this;
         }
 
-        public Name getName(){
-            Name name       = new Name();
-            name.firstName  = this.firstName;
-            name.middleName = this.middleName;
-            name.lastName   = this.lastName;
+        public NameBuilder copy(Name name){
+            this.firstName  = name.firstName;
+            this.middleName = name.middleName;
+            this.lastName   = name.lastName;
+            return this;
+        }
 
-            return name;
+        public Name getName(){
+            return new Name(this);
         }//end of getName method
+
+
     }//end of NameBuilder
 }
