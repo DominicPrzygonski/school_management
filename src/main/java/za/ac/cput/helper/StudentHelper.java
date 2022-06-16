@@ -1,23 +1,22 @@
 /*
  * StudentHelper.java
- * entity class for student with a builder
+ * StudentHelper class to help manage functions for the StudentFactory
  * Rhegan Albert Fortuin 219273693
- * Date of last edit:2022/06/15
+ * Date of last edit:2022/06/16
  */
 
 package za.ac.cput.helper;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.validator.routines.EmailValidator;
 
 public class StudentHelper {
     //***check for blank or null values string***
-    public static boolean isBlankOrNull(String str){
+    public static boolean isBlankOrNull(String str) {
         return StringUtils.isEmpty(str);
     }
 
-    //display which IllegalArgumentException
-    public static void checkParam(String paramName, String paramValue){
+    //***display which IllegalArgumentException***
+    public static void checkParam(String paramName, String paramValue) {
         if (isBlankOrNull(paramValue))
             throw new IllegalArgumentException(String.format("Invalid value for param: %s", paramName));
     }

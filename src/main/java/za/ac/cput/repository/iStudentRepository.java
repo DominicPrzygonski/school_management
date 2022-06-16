@@ -1,8 +1,8 @@
 /*
  * iStudentRepository.java
- * entity class for student with a builder
+ * iStudentRepository which is the repo for student
  * Rhegan Albert Fortuin 219273693
- * Date of last edit:2022/06/15
+ * Date of last edit:2022/06/16
  */
 
 package za.ac.cput.repository;
@@ -10,11 +10,8 @@ package za.ac.cput.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import za.ac.cput.domain.Student;
-import za.ac.cput.factory.StudentFactory;
-
-import java.util.List;
 
 @Repository
 public interface iStudentRepository extends JpaRepository<Student, String> {
-    public List<Student> findStudentByStudentId();
+
 }

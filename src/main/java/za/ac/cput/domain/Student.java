@@ -1,14 +1,13 @@
 /*
-* Student.java
-* entity class for student with a builder
-* Rhegan Albert Fortuin 219273693
-* Date of last edit:2022/06/15
-*/
+ * Student.java
+ * entity class for student with a builder
+ * Rhegan Albert Fortuin 219273693
+ * Date of last edit:2022/06/16
+ */
 
 package za.ac.cput.domain;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -33,7 +32,7 @@ public class Student {
     private Name name;
 
     //***constructor for the builder***
-    public Student(studentBuilder builder){
+    public Student(studentBuilder builder) {
         this.studentId = builder.studentId;
         this.email = builder.email;
         this.name = builder.name;
@@ -44,15 +43,15 @@ public class Student {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Student student = (Student) o;
-        return studentId.equals(student.studentId) && email.equals(student.email) && name.equals(student.name) ;
-    }//end of equals method
+        return studentId.equals(student.studentId) && email.equals(student.email) && name.equals(student.name);
+    }
 
     @Override
     public int hashCode() {
         return Objects.hash(studentId, email, name);
     }
 
-    //create variables into a toString
+    //***create variables into a toString***
     @Override
     public String toString() {
         return "Student{" +
@@ -62,13 +61,13 @@ public class Student {
                 '}';
     }
 
-    //builder pattern class for student
-    public static class studentBuilder{
+    //***builder pattern class for student***
+    public static class studentBuilder {
         private String studentId;
         private String email;
         private Name name;
 
-        //setting the studentId, email and name for the builder
+        //***setting the studentId, email and name for the builder***
         public studentBuilder setStudentId(String studentId) {
             this.studentId = studentId;
             return this;
@@ -84,7 +83,7 @@ public class Student {
             return this;
         }
 
-        public Student build(){
+        public Student build() {
             return new Student(this);
         }
     }
