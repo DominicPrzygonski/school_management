@@ -13,9 +13,9 @@ import za.ac.cput.helper.NameHelper;
 
 public class NameFactory {
 
-    public static Name getName(String firstName, String middleName, String lastName)
-    {
+    public static Name getName(String firstName, String middleName, String lastName) {
         NameHelper.checkStringParam("firstName", firstName);
+        NameHelper.checkStringParam("middleName", middleName);
         NameHelper.checkStringParam("lastName", lastName);
         return new Name.NameBuilder()
                 .setFirstName(firstName)
