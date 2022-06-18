@@ -1,4 +1,10 @@
 package za.ac.cput.controller;
+/*
+ CityControllerTest.java
+ Test for the City controller
+ Author: Mogamad Githr Parker (220408025)
+ Date: 18/06/2022
+ */
 
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,8 +85,12 @@ class CityControllerTest {
                 City[].class);
         System.out.println(Arrays.asList(response.getBody()));
         assertAll(
+<<<<<<< HEAD
+                () -> assertEquals(HttpStatus.OK, response.getStatusCode())
+=======
                 () -> assertEquals(HttpStatus.OK, response.getStatusCode()),
                 () -> assertTrue(response.getBody().length == 0)
+>>>>>>> 1e59caaecf8428269e26544978a70f4ad163af34
         );
     }
 }
