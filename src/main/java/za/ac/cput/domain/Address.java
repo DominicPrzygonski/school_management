@@ -6,25 +6,36 @@
 
 package za.ac.cput.domain;
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-import javax.validation.constraints.NotNull;
+import com.sun.istack.NotNull;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+import static javax.persistence.CascadeType.MERGE;
+import static javax.persistence.CascadeType.PERSIST;
+
 @Entity
+@Embeddable
 @IdClass(Address.AddressID.class)
 public class Address implements Serializable {
 
     //-----Variables-----
     private String unitNumber;
     private String complexNumber;
-    @NotNull @Id private String streetNumber;
-    @NotNull @Id private String streetName;
-    @NotNull @Id private int postalCode;
-    @Embedded private City city;
+    @Id
+    private String streetNumber;
+    @Id
+    private String streetName;
+    @Id
+    private int postalCode;
+    @ManyToOne(cascade = {PERSIST, MERGE})
+    @NotFound(action = NotFoundAction.IGNORE)
+    @NotNull
+    private City city;
+
 
     //-----Constructor-----
 
