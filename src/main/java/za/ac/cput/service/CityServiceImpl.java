@@ -1,5 +1,6 @@
 package za.ac.cput.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.City;
 import za.ac.cput.domain.Country;
@@ -13,6 +14,7 @@ import java.util.Optional;
 public class CityServiceImpl implements CityService {
     private final CityRepository cityRepository;
 
+    @Autowired
     public CityServiceImpl(CityRepository cityRepository) {
         this.cityRepository = cityRepository;
     }
@@ -35,7 +37,8 @@ public class CityServiceImpl implements CityService {
 
     public void deleteById(String id) {
         Optional<City> city = read(id);
-        city.ifPresent(this::delete);
+        if (city.isPresent())
+            delete(city.get());
     }
 
     //Question 7
@@ -49,6 +52,4 @@ public class CityServiceImpl implements CityService {
         }
         return null;
     }
-
-
 }
